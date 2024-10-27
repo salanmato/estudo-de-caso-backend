@@ -22,9 +22,10 @@ app.get('/projeto-escolar/professor', (req, res) => {
 
 //inserir novos professores
 app.post('/projeto-escolar/professor', (req, res) => {
-    const novaEntrada = req.body
-    console.log('Headers:', req.headers); // Verifique os cabeçalhos
-    console.log('Body:', req.body); // Verifique o corpo da requisição
+    const novaEntrada = req.body //pegando o conteúdo enviado pelo usuário
+    console.log('Headers:', req.headers); // Print do cabeçalho
+    console.log('Body:', req.body); // Print do corpo da requisição
+
     db.query("INSERT INTO tbl_professor (nome, cpf, data_nascimento, logradouro, bairro, cidade, estado, cep, email) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [novaEntrada.nome, novaEntrada.cpf, novaEntrada.dataNascimento, novaEntrada.logradouro, novaEntrada.bairro, novaEntrada.cidade, novaEntrada.estado, novaEntrada.cep, novaEntrada.email],
         (err, result) => {
@@ -36,6 +37,7 @@ app.post('/projeto-escolar/professor', (req, res) => {
             }
         }
     );
+
 })
 
 //Ver só 1 professor
